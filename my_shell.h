@@ -31,6 +31,10 @@ int my_strcmp(const char*,const char*);
 char* my_getenv(const char *name,char** env);
 int my_strlen(const char* str);
 int my_strncmp(const char* str1,const char *str2, size_t n);
+char* my_strdup(const char*);
+char* my_strcpy(char* ,const char*);
+char* my_strtok(char* str,const char* delimiter);
+char* my_strchr(const char*,char);
 
 
 #endif

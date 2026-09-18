@@ -17,16 +17,16 @@ int shell_builts(char** args,char** env ,char* initial_dir){
         return command_cd(args,initial_dir);
 
     }else if (my_strcmp(args[0],"pwd") == 0){
-        command_pwd();
+       return  command_pwd();
 
     }else if (my_strcmp(args[0],"echo") == 0){
        return command_echo(args,env);
 
     }else if (my_strcmp(args[0],"env") == 0){
-        command_env(env);
+        return command_env(env);
 
     }else if (my_strcmp(args[0],"which") == 0){
-        // command_which(args[0],env);
+        return command_which(args,env);
 
     }else if (my_strcmp(args[0],"exit") == 0 || my_strcmp(args[0],"quit") == 0){
         printf("Exiting the shell... \n");
@@ -64,13 +64,26 @@ void shell_loop(char **env){
             printf("\n");
         }*/
 
-        if (args[0]){
+        if(!args[0]){
+            return;
+
+        }
+        else if (my_strcmp(args[0],"setenv") == 0){
+            env = command_setenv(args,env);
+
+        }
+        else if (my_strcmp(args[0],"unsetenv") == 0){
+            env  = command_unsetenv(args,env);
+
+        }
+
+        else{
             shell_builts(args,env,initial_dir);
         }
     }
 
-    // free_tokens(args);
-
+    free_tokens(args);
+    free(env);
 }
 
 int main(int argc,char **argv,char **env){
