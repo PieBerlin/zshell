@@ -33,8 +33,8 @@ int shell_builts(char** args,char** env ,char* initial_dir){
         exit(EXIT_SUCCESS);
 
     }else{
-        // Not a built in command 
-        // executor();
+        // Not a built in command, execute external command  
+        return executor(args,env);
     }
 
     return 0 ;
@@ -82,8 +82,8 @@ void shell_loop(char **env){
         }
     }
 
-    free_tokens(args);
-    free(env);
+    // free_tokens(args);
+    // free(env);
 }
 
 int main(int argc,char **argv,char **env){

@@ -5,6 +5,7 @@
 //
 // cd , cd [path], cd - (previous dir),cd ..,cd ~ (home directory), handle non existing dir 
 int command_cd(char** args,char* initial_dir){
+    (void)initial_dir;
    if(args[1] == NULL){
        printf("cd: expected argument\"cd [dir]\"\n");
    } else if(chdir(args[1]) == 0){

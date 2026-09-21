@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
 
 #define MAX_INPUT 1024
 #define MAX_PATH 256
@@ -26,6 +29,16 @@ char** command_setenv(char**,char**);
 char** command_unsetenv(char**,char**);
 
 
+// Executor
+int executor(char**,char**);
+int child_process(char** args,char** env);
+
+
+// path functions 
+char* get_path(char** env);
+char** split_paths(char* , int*);
+
+
 // Helper functions 
 int my_strcmp(const char*,const char*);
 char* my_getenv(const char *name,char** env);
@@ -35,6 +48,7 @@ char* my_strdup(const char*);
 char* my_strcpy(char* ,const char*);
 char* my_strtok(char* str,const char* delimiter);
 char* my_strchr(const char*,char);
+char* my_strncpy(char* dst, const char* src, size_t n);
 
 
 #endif

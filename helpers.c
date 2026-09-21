@@ -10,7 +10,7 @@ int my_strcmp(const char* str1,const char* str2){
     }
     return (*(unsigned char*)str1 - *(unsigned char*)str2);
 }
-
+// return the length of string 
 int my_strlen(const char* str){
     if (str == NULL) return -1;
     size_t len  =0;
@@ -54,6 +54,7 @@ char* my_getenv(const char *name,char** env){
 
 }
 
+// Copies the content of the source string into the destination string 
 char* my_strcpy(char* dst,const char* src){
     if (src == NULL) return NULL;
     char* ret  = dst;
@@ -66,7 +67,7 @@ char* my_strcpy(char* dst,const char* src){
     return ret;
 }
 
-
+// Create a duplicate of the input string by allocating new memory
 char* my_strdup(const char* str){
     if (!str) return NULL;
     size_t len = my_strlen(str);
@@ -80,7 +81,7 @@ char* my_strdup(const char* str){
     return duplicated;
 
 }
-
+// Locates the first occurence of a character in a string 
 char* my_strchr(const char* str,char c){
     while(*str){
         if(*str == c){
@@ -91,7 +92,7 @@ char* my_strchr(const char* str,char c){
     return NULL;
 }
 
-
+// Tokenizes a string by splitting it based on a set of delimeter character
 char* my_strtok(char* input_string,const char* del){
     static char* next_token = NULL;
     // If input string  is NULL 
@@ -120,8 +121,18 @@ char* my_strtok(char* input_string,const char* del){
     }else{
         next_token = NULL;
     }
-
     return token;
+}
+// Copies up to n characters from the source to the destination string , ensuring null termination
+char* my_strncpy(char* dst, const char* src, size_t n){
 
+    size_t i;
+    for (i = 0;  i< n && src[i] != '\0';i++){
+        dst[i] = src[i];
+    }
+    for (; i< n; i++){
+        dst[i] = '\0';
+    }
 
+    return dst;
 }
